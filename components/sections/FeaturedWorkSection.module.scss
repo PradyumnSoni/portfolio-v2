@@ -1,0 +1,115 @@
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background: var(--color-bg-cream);
+}
+
+.inner {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+.label {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2xl);
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+.project {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3xl);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.projectInner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-2xl);
+  align-items: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectText {
+  order: 1;
+}
+
+.projectTitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.projectDesc {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.viewBtn {
+  margin-left: auto;
+  display: block;
+}
+
+.projectVisuals {
+  position: relative;
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-end;
+  order: 2;
+}
+
+.mainImage {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.mobileMockup {
+  position: relative;
+  width: 140px;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-border);
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 100px;
+  }
+}
+
+.img {
+  object-fit: cover;
+}

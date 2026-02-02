@@ -1,0 +1,18 @@
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  z-index: calc(var(--z-header) + 10);
+  padding: var(--space-md) var(--space-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-inverse);
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: var(--space-md);
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
+  }
+}
