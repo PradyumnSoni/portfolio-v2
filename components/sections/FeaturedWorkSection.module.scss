@@ -1,115 +1,237 @@
 .section {
-  padding: var(--section-padding-y) var(--section-padding-x);
   background: var(--color-bg-cream);
 }
 
 .inner {
   max-width: var(--max-width-content);
   margin: 0 auto;
+  overflow-x: visible;
 }
 
-.label {
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-accent);
-  margin-bottom: var(--space-sm);
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.headerText {
+  flex: 1;
+  min-width: 0;
 }
 
 .heading {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text);
+  color: var(--color-accent);
   margin-bottom: var(--space-sm);
 }
 
 .subtitle {
   font-size: 1rem;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-2xl);
+  margin: 0;
 }
 
-.list {
-  list-style: none;
+.nav {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3xl);
+  gap: var(--space-sm);
+  flex-shrink: 0;
 }
 
-.project {
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--space-3xl);
-
-  &:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-}
-
-.projectInner {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--space-2xl);
-  align-items: center;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.projectText {
-  order: 1;
-}
-
-.projectTitle {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text);
-  margin-bottom: var(--space-md);
-}
-
-.projectDesc {
-  font-size: 0.9375rem;
+.navBtn {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: transparent;
   color: var(--color-text-muted);
-  line-height: 1.6;
-  margin-bottom: var(--space-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-text);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
 }
 
-.viewBtn {
-  margin-left: auto;
+/* @mdi/react Icon: use size="1.25rem" in JSX; override here to change */
+.navArrowIcon {
   display: block;
+  color: currentColor;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0;
 }
 
-.projectVisuals {
-  position: relative;
+/* Full-bleed so track isn’t clipped on the right */
+.trackWrap {
+  width: 100vw;
+}
+
+.track {
   display: flex;
   gap: var(--space-lg);
-  align-items: flex-end;
-  order: 2;
-}
+  width: 100%;
+  min-width: 0; /* allow shrinking so overflow can scroll */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox: hide scrollbar */
 
-.mainImage {
-  position: relative;
-  flex: 1;
-  aspect-ratio: 16 / 10;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--color-border);
-}
-
-.mobileMockup {
-  position: relative;
-  width: 140px;
-  aspect-ratio: 9 / 16;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--color-border);
-  flex-shrink: 0;
-
-  @media (max-width: 768px) {
-    width: 100px;
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge: hide scrollbar */
   }
 }
 
-.img {
+/* Card: full-bleed image + gradient overlay + content top-left (Figma 992-76) */
+.card {
+  flex: 0 0 min(85%, 380px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.cardButton {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 7;
+  max-height: 700px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  display: block;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Full-bleed background layer */
+.cardBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cardBgImg {
   object-fit: cover;
+}
+
+.cardBgFallback {
+  position: absolute;
+  inset: 0;
+}
+
+/* Dark gradient overlay at top for text readability */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Per-card color gradient only.
+     Uses --card-overlay-start / --card-overlay-end when provided from React;
+     falls back to card accent color otherwise. */
+  background: linear-gradient(
+    180deg,
+    color-mix(
+      in srgb,
+      var(--card-overlay-start, var(--card-accent)) 100%,
+      transparent
+    ) 0%,
+    color-mix(
+      in srgb,
+      var(--card-overlay-end, var(--card-accent)) 80%,
+      transparent
+    ) 100%
+  );
+  pointer-events: none;
+}
+
+/* Content: icon + title in row, description below */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-lg);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+/* Squircle icon (rounded square) with accent background */
+.cardIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.iconImg {
+  object-fit: contain;
+  filter: none;
+  border-radius: var(--radius-md);
+}
+
+.iconPlaceholder {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.cardTitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: var(--font-weight-semibold);
+  color: var(--card-text-color, var(--color-text-inverse));
+  margin: 0;
+  line-height: 1.25;
+}
+
+.cardDesc {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--card-text-muted, rgba(255, 255, 255, 0.95));
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 85%;
+  }
 }

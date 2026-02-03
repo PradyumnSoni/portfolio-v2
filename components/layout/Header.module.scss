@@ -57,7 +57,7 @@
 .icons {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0;
   flex-shrink: 0;
 }
 
@@ -70,10 +70,10 @@
   padding: 0;
   color: #282828;
   border-radius: var(--radius-md);
+  transition: color 0.2s ease;
 
   &:hover {
     color: var(--color-accent);
-    background: var(--color-border);
   }
 
   &:focus-visible {
@@ -83,16 +83,16 @@
 }
 
 .iconSvg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 .menuButton {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: none;
   background: transparent;
