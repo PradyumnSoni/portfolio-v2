@@ -122,6 +122,18 @@ export function FeaturedWorkSection() {
                 {!project.disableColorOverlay && (
                   <div className={styles.cardOverlay} aria-hidden />
                 )}
+                {/* Foreground image at bottom of card (e.g. person + device) */}
+                {project.foregroundImage && (
+                  <div className={styles.cardForeground} aria-hidden>
+                    <Image
+                      src={project.foregroundImage}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 85vw, 380px"
+                      className={styles.cardForegroundImg}
+                    />
+                  </div>
+                )}
                 {/* Content: icon + title in a row, description below */}
                 <div className={styles.cardContent}>
                   <div className={styles.cardHeader}>

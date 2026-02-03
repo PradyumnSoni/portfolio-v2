@@ -23,7 +23,7 @@
 }
 
 .heading {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(2.25rem, 5.5vw, 3.25rem);
   font-weight: var(--font-weight-bold);
   color: var(--color-accent);
   margin-bottom: var(--space-sm);
@@ -163,10 +163,26 @@
   pointer-events: none;
 }
 
+/* Foreground image anchored at bottom of card */
+.cardForeground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cardForegroundImg {
+  object-fit: contain;
+  object-position: bottom center;
+}
+
 /* Content: icon + title in row, description below */
 .cardContent {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: var(--space-lg);
   height: 100%;
   display: flex;

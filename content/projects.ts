@@ -5,39 +5,10 @@ export type Project = {
   tools?: string[];
   timeframe?: string;
   shortDescription: string;
-  thumbnail: string;
+  thumbnail?: string;
   figmaLink?: string;
   prototypeLink?: string;
 };
-
-// Selected projects (carousel)
-export const selectedProjects: Project[] = [
-  {
-    id: "delivery-partner-app",
-    title: "Delivery Partner App - V2",
-    shortDescription: "Mobile app for delivery partners.",
-    thumbnail: "/next.svg",
-    figmaLink: "https://www.figma.com/design/A1909OwqI6riUHo6SZDhBJ/",
-  },
-  {
-    id: "corporate-innovation",
-    title: "Corporate Innovation Project",
-    shortDescription: "Innovation and discovery.",
-    thumbnail: "/vercel.svg",
-  },
-  {
-    id: "swiggy-diner",
-    title: "Swiggy - Diner App",
-    shortDescription: "Dining and restaurant experience.",
-    thumbnail: "/next.svg",
-  },
-  {
-    id: "project-4",
-    title: "Project Four",
-    shortDescription: "Another case study.",
-    thumbnail: "/vercel.svg",
-  },
-];
 
 // Featured work carousel (4 projects, card layout per Figma)
 export type FeaturedWorkCard = Project & {
@@ -55,6 +26,8 @@ export type FeaturedWorkCard = Project & {
   overlayEnd?: string;
   /** If true, disables the colored overlay gradient (text-only dark overlay or none) */
   disableColorOverlay?: boolean;
+  /** Optional foreground image placed at bottom of card (e.g. person + device mockup) */
+  foregroundImage?: string;
 };
 
 export const featuredWorkCards: FeaturedWorkCard[] = [
@@ -63,7 +36,6 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     title: "Dispatch Delivery Partner App",
     shortDescription:
       "A rider-facing app for everyday deliveries. Designed to onboard riders and make them complete orders reliably.",
-    thumbnail: "",
     cardColor: "#F5E6C8",
     cardTextColor: "dark",
     icon: "/ProjectIconDispatch.jpg",
@@ -71,13 +43,13 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     // F2E6C7 90% opacity to E6BA42 80% opacity
     overlayStart: "rgba(242, 230, 199, 1)",
     overlayEnd: "rgba(230, 186, 66, 0.5)",
+    foregroundImage: "/ProjectForegroundDispatch.png",
   },
   {
     id: "marketplace-project",
     title: "The Marketplace Project",
     shortDescription:
       "OLX is great at listing, but bad at closing deals. I designed the parts most platforms ignore.",
-    thumbnail: "",
     cardColor: "#1E3A5F",
     cardTextColor: "light",
     icon: "/ProjectIconMarketplace.jpg",
@@ -85,13 +57,13 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     // 193F8E 100% opacity to 0C1434 80% opacity
     overlayStart: "rgba(25, 63, 142, 1)",
     overlayEnd: "rgba(12, 20, 52, 0.8)",
+    foregroundImage: "/ProjectForegroundMarketplace.png",
   },
   {
     id: "food-for-thought",
     title: "Food for Thought",
     shortDescription:
       "Dinner, with a digital layer. Exploring how dining experiences can be transformed with augmented reality.",
-    thumbnail: "",
     cardColor: "#2D2D2D",
     cardTextColor: "light",
     icon: "/ProjectIconFood.jpg",
@@ -101,10 +73,9 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     overlayEnd: "transparent",
   },
   {
-    id: "creative-experiment",
-    title: "A creative experiment",
-    shortDescription: "Writing and exploration. More details coming soon.",
-    thumbnail: "",
+    id: "SoulInk",
+    title: "SoulInk",
+    shortDescription: "A creative writing pad to ideate, draft, and experiment with interactive creative writing formats.",
     cardColor: "#D4E5D9",
     cardTextColor: "dark",
     icon: "/ProjectIconSoulInk.jpg",
@@ -113,27 +84,3 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     disableColorOverlay: true,
   },
 ];
-
-// Legacy: featured work (detailed showcases) – kept for modal/case study if needed
-export type FeaturedProject = Project & {
-  image: string;
-  mobileMockup?: string;
-};
-
-export const featuredProjects: FeaturedProject[] = featuredWorkCards.map(
-  (card) => ({
-    id: card.id,
-    title: card.title,
-    role: card.role,
-    tools: card.tools,
-    timeframe: card.timeframe,
-    shortDescription: card.shortDescription,
-    thumbnail: card.thumbnail || "",
-    figmaLink: card.figmaLink,
-    prototypeLink: card.prototypeLink,
-    image: card.image || "",
-  })
-);
-
-// Legacy list for modal/cards (keep for compatibility)
-export const projects = selectedProjects;

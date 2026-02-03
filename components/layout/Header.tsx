@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Icon from "@mdi/react";
+import { mdiEmail, mdiWhatsapp } from "@mdi/js";
 import styles from "./Header.module.scss";
 
 const SCROLL_THRESHOLD = 60;
@@ -10,47 +12,7 @@ const navLinks = [
   { href: "#beyond-projects", label: "About" },
   { href: "#featured-work", label: "Featured Projects" },
   { href: "#contact", label: "Community" },
-  { href: "#selected-projects", label: "Client Projects" },
 ];
-
-function WhatsAppIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
-    </svg>
-  );
-}
-
-function EmailIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect width="20" height="16" x="2" y="4" rx="2" />
-      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-    </svg>
-  );
-}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -138,14 +100,14 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <WhatsAppIcon className={styles.iconSvg} />
+            <Icon path={mdiWhatsapp} className={styles.iconSvg} size="1.25rem" aria-hidden />
           </a>
           <a
             href="mailto:"
             className={styles.iconLink}
             aria-label="Email"
           >
-            <EmailIcon className={styles.iconSvg} />
+            <Icon path={mdiEmail} className={styles.iconSvg} size="1.25rem" aria-hidden />
           </a>
         </div>
       </nav>

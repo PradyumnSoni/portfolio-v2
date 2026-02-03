@@ -1,6 +1,0 @@
-<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 48.1807 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Arrow">
-<rect x="0.75" y="0.75" width="46.6807" height="46.5" rx="23.25" stroke="var(--stroke-0, black)" stroke-opacity="0.1" stroke-width="1.5"/>
-<path id="Vector" d="M30.3233 24.6136L23.2154 31.7215L24.0903 32.5904L32.6807 24L24.0903 15.4097L23.2154 16.2785L30.3233 23.3864H15.5V24.6136H30.3233Z" fill="var(--fill-0, #333333)" stroke="var(--stroke-0, #333333)" stroke-linejoin="round"/>
-</g>
-</svg>
