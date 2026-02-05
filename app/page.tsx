@@ -5,7 +5,6 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { FeaturedWorkSection } from "@/components/sections/FeaturedWorkSection";
 import { CommunityEducationSection } from "@/components/sections/CommunityEducationSection";
-import { ContactSection } from "@/components/sections/ContactSection";
 import { PageClient } from "./PageClient";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
         <AboutSection />
         <FeaturedWorkSection />
         <CommunityEducationSection />
-        <ContactSection />
       </main>
       <Footer />
     </PageClient>
