@@ -1,11 +1,15 @@
 .section {
-  background: #ffffff;
-  padding: clamp(4.5rem, 10vw, 9.375rem); // ~150px max
+  // Full-bleed wrapper for multiple subsections (each handles its own bg/padding)
 }
 
 .inner {
   max-width: var(--max-width-content);
   margin: 0 auto;
+  padding: clamp(4.5rem, 10vw, 9.375rem); // ~150px max
+}
+
+.introSection {
+  background: #ffffff;
 }
 
 .intro {
@@ -81,5 +85,113 @@
 
 .mediaImg {
   object-fit: cover;
+}
+
+/* Canary workshop */
+.canarySection {
+  background: #f0ebe6;
+}
+
+.canary {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 6.25rem); // ~100px max
+}
+
+.canaryText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1000px;
+}
+
+.canaryTitle {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: clamp(2rem, 5vw, 3.5rem); // 64px max
+  letter-spacing: -0.01em;
+  color: #000;
+}
+
+.canaryBody {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(1.125rem, 2.7vw, 1.75rem); // 32px max
+  line-height: 1.3;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.canaryMeta {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.card {
+  background: var(--color-bg-dark-teal);
+  border-radius: 30px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardMedia {
+  position: relative;
+  min-height: 240px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cardMediaImg {
+  object-fit: cover;
+}
+
+.cardMediaPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px clamp(2rem, 6vw, 70px);
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: clamp(1.75rem, 4vw, 2.5rem); // 48px max
+  line-height: 1.1;
+  color: #fff;
+}
+
+.cardBody {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: 1.25rem; // 20px
+  color: rgba(255, 255, 255, 0.5);
 }
 
