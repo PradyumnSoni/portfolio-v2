@@ -8,6 +8,10 @@ export type Project = {
   thumbnail?: string;
   figmaLink?: string;
   prototypeLink?: string;
+  /** Optional URL to open in a rich project modal (e.g. live prototype, detailed page) */
+  projectLink?: string;
+  /** Optional identifier for custom React content to render inside the project modal */
+  customContentId?: string;
 };
 
 // Featured work carousel (4 projects, card layout per Figma)
@@ -44,6 +48,9 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     overlayStart: "rgba(242, 230, 199, 1)",
     overlayEnd: "rgba(230, 186, 66, 0.5)",
     foregroundImage: "/ProjectForegroundDispatch.png",
+    projectLink:
+      "https://play.google.com/store/apps/details?id=com.harshdispatch.dispatchrider.v2",
+    customContentId: "dispatch",
   },
   {
     id: "marketplace-project",
@@ -71,6 +78,7 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     // Food for Thought: 000000 95% opacity at top to 0% opacity at middle
     overlayStart: "rgba(0, 0, 0, 0.95)",
     overlayEnd: "transparent",
+    projectLink: "https://pradyumn-projects.framer.website/foodforthought",
   },
   {
     id: "SoulInk",
@@ -82,5 +90,6 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     image: "/ProjectBackgroundSoulInk.jpg",
     // SoulInk: no colored gradient overlay
     disableColorOverlay: true,
+    projectLink: "https://pradyumn-projects.framer.website/soulink",
   },
 ];

@@ -1,0 +1,143 @@
+@use "@/styles/tokens.scss" as *;
+
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  cursor: default;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  max-width: 95vw;
+  height: 90vh;
+  max-height: 90vh;
+  overflow: hidden;
+  background: var(--color-bg-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-modal);
+  outline: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 1;
+  border-radius: 999px;
+  padding-inline: 0.5rem;
+  padding-block: 0.5rem;
+  background: #ffffff20;
+  color: #ffffff;
+}
+
+.closeIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-cream);
+  padding: var(--space-md);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.frameWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-cream);
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background: var(--color-bg-cream);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 3px solid rgba(0, 0, 0, 0.08);
+  border-top-color: rgba(0, 0, 0, 0.65);
+  animation: project-modal-spin 1s linear infinite;
+}
+
+.loadingLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.customContent {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+@keyframes project-modal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: var(--space-md);
+  }
+
+  .content {
+    padding: var(--space-sm);
+  }
+
+  .body {
+    padding: var(--space-sm);
+  }
+}
+

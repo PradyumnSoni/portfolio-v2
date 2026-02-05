@@ -14,6 +14,7 @@ export function FeaturedWorkSection() {
   const { openModal } = useModal();
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
+  const [comingSoon, setComingSoon] = useState(false);
 
   useEffect(() => {
     const el = trackRef.current;
@@ -126,11 +127,22 @@ export function FeaturedWorkSection() {
               <button
                 type="button"
                 className={styles.cardButton}
-                onClick={() =>
-                  openModal("caseStudy", {
-                    caseStudy: { id: project.id, title: project.title },
-                  })
-                }
+                onClick={() => {
+                  if (project.id === "marketplace-project") {
+                    setComingSoon(true);
+                    window.setTimeout(() => setComingSoon(false), 3000);
+                    return;
+                  }
+                  openModal("project", {
+                    project: {
+                      id: project.id,
+                      title: project.title,
+                      projectLink:
+                        project.projectLink ?? project.prototypeLink ?? project.figmaLink,
+                      customContentId: project.customContentId,
+                    },
+                  });
+                }}
               >
                 {/* Full-bleed background image */}
                 <div className={styles.cardBg}>
@@ -191,6 +203,11 @@ export function FeaturedWorkSection() {
           ))}
           </div>
         </div>
+        {comingSoon && (
+          <div className={styles.toast} role="status" aria-live="polite">
+            This project is undergoing maintenance. Please check back later. 🪴
+          </div>
+        )}
       </ScrollReveal>
     </section>
   );
