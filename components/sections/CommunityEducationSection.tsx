@@ -14,6 +14,7 @@ export function CommunityEducationSection() {
     >
       <CommunityEducationIntro />
       <CanaryWorkshop />
+      <BirlaPanel />
     </section>
   );
 }
@@ -156,4 +157,83 @@ function WorkshopCard({ title, body, imageSrc }: WorkshopCardProps) {
     </article>
   );
 }
+
+function BirlaPanel() {
+  return (
+    <div className={styles.birlaSection} aria-labelledby="birla-heading">
+      <ScrollReveal className={styles.inner}>
+        <div className={styles.birla}>
+          <div className={styles.birlaText}>
+            <Tag
+              as="div"
+              className={styles.introTag}
+              textClassName={styles.tagText}
+              icon={
+                <Image
+                  src="/pradyhead.png"
+                  alt=""
+                  width={32}
+                  height={32}
+                  className={styles.tagIcon}
+                  aria-hidden
+                />
+              }
+            >
+              Panel Conversation • Speaker
+            </Tag>
+            <h3 id="birla-heading" className={styles.birlaTitle}>
+              Skills That Go Beyond Design.
+            </h3>
+            <p className={styles.birlaBody}>
+              I was invited as a guest speaker on World Youth Skills Day to be
+              part of the panel for a conversation on skills, creativity, and
+              future readiness.
+            </p>
+            <p className={styles.birlaMeta}>
+              Birla Open Minds International School, Hyderabad
+            </p>
+          </div>
+
+          <div className={styles.birlaGrid}>
+            <figure className={styles.birlaItem}>
+              <div className={styles.birlaImage}>
+                <Image
+                  src="/BirlaPanel1.jpg"
+                  alt=""
+                  fill
+                  className={styles.birlaImg}
+                  sizes="(max-width: 900px) 100vw, 600px"
+                  unoptimized
+                />
+                <div className={styles.birlaOverlay} aria-hidden />
+              </div>
+              <figcaption className={styles.birlaCaption}>
+                Positioning skills as tools for agency, not just employability.
+              </figcaption>
+            </figure>
+
+            <figure className={styles.birlaItem}>
+              <div className={styles.birlaImage}>
+                <Image
+                  src="/BirlaPanel2.jpg"
+                  alt=""
+                  fill
+                  className={styles.birlaImg}
+                  sizes="(max-width: 900px) 100vw, 600px"
+                  unoptimized
+                />
+                <div className={styles.birlaOverlay} aria-hidden />
+              </div>
+              <figcaption className={styles.birlaCaption}>
+                Connecting creativity, business thinking, and execution for the
+                next generation.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+  );
+}
+
 
