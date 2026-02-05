@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/components/animations/variants";
+import { Tag } from "@/components/ui/Tag";
 import styles from "./HeroSection.module.scss";
 
 export function HeroSection() {
@@ -15,22 +16,29 @@ export function HeroSection() {
         whileInView="animate"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <motion.p
+        <Tag
+          as="p"
+          motion
           className={styles.label}
-          variants={fadeInUp}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          motionProps={{
+            variants: fadeInUp,
+            transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+          }}
+          icon={
+            <Image
+              src="/pradyhead.png"
+              alt=""
+              width={40}
+              height={40}
+              className={styles.labelHead}
+              priority
+              unoptimized
+              aria-hidden
+            />
+          }
         >
-          <Image
-            src="/pradyhead.png"
-            alt=""
-            width={40}
-            height={40}
-            className={styles.labelHead}
-            priority
-            unoptimized
-          />
           Pradyumn Soni
-        </motion.p>
+        </Tag>
         <motion.h1
           className={styles.title}
           variants={fadeInUp}

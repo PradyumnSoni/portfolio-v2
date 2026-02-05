@@ -4,9 +4,7 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { FeaturedWorkSection } from "@/components/sections/FeaturedWorkSection";
-import { TalksSection } from "@/components/sections/TalksSection";
-import { WorkshopSection } from "@/components/sections/WorkshopSection";
-import { PanelSection } from "@/components/sections/PanelSection";
+import { CommunityEducationSection } from "@/components/sections/CommunityEducationSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PageClient } from "./PageClient";
 
@@ -19,9 +17,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <FeaturedWorkSection />
-        <TalksSection />
-        <WorkshopSection />
-        <PanelSection />
+        <CommunityEducationSection />
         <ContactSection />
       </main>
       <Footer />
