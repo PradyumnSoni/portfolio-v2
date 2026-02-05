@@ -9,7 +9,7 @@ import styles from "./Header.module.scss";
 const SCROLL_THRESHOLD = 60;
 
 const navLinks = [
-  { href: "#beyond-projects", label: "About" },
+  { href: "#about", label: "About" },
   { href: "#featured-work", label: "Featured Projects" },
   { href: "#contact", label: "Community" },
 ];

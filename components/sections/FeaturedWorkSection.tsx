@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Icon from "@mdi/react";
 import { mdiChevronLeft, mdiChevronRight } from "@mdi/js";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { featuredWorkCards } from "@/content/projects";
 import { useModal } from "@/contexts/ModalContext";
@@ -12,6 +12,34 @@ import styles from "./FeaturedWorkSection.module.scss";
 export function FeaturedWorkSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const { openModal } = useModal();
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    const compute = () => {
+      const scrollLeft = el.scrollLeft;
+      // Enable/disable arrows based on remaining scroll space.
+      const maxScrollLeft = el.scrollWidth - el.clientWidth;
+      const eps = 2; // avoid float rounding issues
+      setCanPrev(scrollLeft > eps);
+      setCanNext(scrollLeft < maxScrollLeft - eps);
+    };
+
+    const onScroll = () => compute();
+    const onResize = () => compute();
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
+    compute();
+
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
 
   const scroll = useCallback((direction: "prev" | "next") => {
     const el = trackRef.current;
@@ -31,35 +59,39 @@ export function FeaturedWorkSection() {
         <header className={styles.header}>
           <div className={styles.headerText}>
             <h2 id="featured-heading" className={styles.heading}>
-              Selected Projects
+              Featured Projects
             </h2>
             <p className={styles.subtitle}>
               Real-world products, experiments, and explorations across domains.
             </p>
           </div>
-          <div className={styles.nav} role="group" aria-label="Carousel navigation">
-            <button
-              type="button"
-              className={styles.navBtn}
-              onClick={() => scroll("prev")}
-              aria-label="Previous projects"
-            >
-              <Icon
-                path={mdiChevronLeft}
-                className={styles.navArrowIcon}
-              />
-            </button>
-            <button
-              type="button"
-              className={styles.navBtn}
-              onClick={() => scroll("next")}
-              aria-label="Next projects"
-            >
-              <Icon
-                path={mdiChevronRight}
-                className={styles.navArrowIcon}
-              />
-            </button>
+          <div className={styles.carouselControls}>
+            <div className={styles.nav} role="group" aria-label="Carousel navigation">
+              <button
+                type="button"
+                className={styles.navBtn}
+                onClick={() => scroll("prev")}
+                disabled={!canPrev}
+                aria-label="Previous projects"
+              >
+                <Icon
+                  path={mdiChevronLeft}
+                  className={styles.navArrowIcon}
+                />
+              </button>
+              <button
+                type="button"
+                className={styles.navBtn}
+                onClick={() => scroll("next")}
+                disabled={!canNext}
+                aria-label="Next projects"
+              >
+                <Icon
+                  path={mdiChevronRight}
+                  className={styles.navArrowIcon}
+                />
+              </button>
+            </div>
           </div>
         </header>
 

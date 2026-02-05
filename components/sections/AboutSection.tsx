@@ -13,17 +13,6 @@ export function AboutSection() {
           interfaces and developing them for production, with a strong emphasis
           on systems thinking.
         </p>
-        <p className={styles.role}>
-          Currently designing a last-mile mobility platform{" "}
-          <a
-            href="https://dispatch.network"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.roleLink}
-          >
-            @Dispatch Network
-          </a>
-        </p>
       </ScrollReveal>
     </section>
   );

@@ -8,8 +8,9 @@
   --color-text: #111111;
   --color-text-muted: #333333;
   --color-text-inverse: #ffffff;
-  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border: rgba(0, 0, 0, 0.1);
   --color-overlay: #ffffff;
+  --color-bg-dark-teal: #0C1F21;
 
   // Typography – Nohemi (loaded via next/font in layout)
   --font-primary: var(--font-nohemi), system-ui, sans-serif;
