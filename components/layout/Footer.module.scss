@@ -49,6 +49,12 @@
   width: 150px;
   height: 150px;
   animation: footer-spin 40s linear infinite;
+  cursor: pointer;
+  touch-action: manipulation;
+
+  &[data-boosted="true"] {
+    animation-duration: 1.2s;
+  }
 
   @media (max-width: 768px) {
     width: 150px;

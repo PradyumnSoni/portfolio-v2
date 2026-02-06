@@ -205,7 +205,7 @@ export function FeaturedWorkSection() {
         </div>
         {comingSoon && (
           <div className={styles.toast} role="status" aria-live="polite">
-            This project is undergoing maintenance. Please check back later. 🪴
+            This project is undergoing an update. Please check back later. 🪴
           </div>
         )}
       </ScrollReveal>
