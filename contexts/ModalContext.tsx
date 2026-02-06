@@ -8,11 +8,10 @@ import {
   ReactNode,
 } from "react";
 
-export type ModalType = "caseStudy" | "imageZoom" | "project" | null;
+export type ModalType = "caseStudy" | "project" | null;
 
 export type ModalPayload = {
   caseStudy?: { id: string; title: string };
-  imageZoom?: { src: string; alt: string };
   project?: {
     id: string;
     title: string;

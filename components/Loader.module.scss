@@ -13,36 +13,60 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-lg);
+  text-align: center;
+}
+
+.lineTop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+.lineBottom {
+  margin-top: 0;
+  position: relative;
+  min-height: 2.8rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  font-size: 2rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-  border-radius: var(--radius-md);
-}
-
-.text {
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
-}
-
-.progressTrack {
-  width: 120px;
-  height: 4px;
-  background: var(--color-border);
-  border-radius: 2px;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 999px;
+  background: transparent;
   overflow: hidden;
 }
 
-.progressBar {
+.logoImage {
+  width: 100%;
   height: 100%;
-  background: var(--color-accent);
-  border-radius: 2px;
+  border-radius: 999px;
+}
+
+.lineText,
+.lineSubtext {
+  color: var(--color-accent);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  font-size: 4rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.lineBottom .lineText,
+.lineBottom .lineSubtext {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lineLayer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

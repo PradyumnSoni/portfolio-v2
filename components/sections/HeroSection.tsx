@@ -4,24 +4,27 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/components/animations/variants";
 import { Tag } from "@/components/ui/Tag";
+import { useFirstLoadReady } from "@/app/PageClient";
 import styles from "./HeroSection.module.scss";
 
 export function HeroSection() {
+  const isReady = useFirstLoadReady();
+
   return (
     <section id="hero" className={styles.hero} aria-label="Hero">
       <motion.div
         className={styles.inner}
         variants={staggerContainer}
         initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.3 }}
+        animate={isReady ? "animate" : "initial"}
       >
         <Tag
           as="p"
           motion
           className={styles.label}
           motionProps={{
-            variants: fadeInUp,
+            initial: fadeInUp.initial,
+            animate: isReady ? fadeInUp.animate : fadeInUp.initial,
             transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
           }}
           icon={
