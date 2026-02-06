@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Icon from "@mdi/react";
 import { mdiChevronLeft, mdiChevronRight } from "@mdi/js";
+import { motion } from "framer-motion";
 import { useRef, useCallback, useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { fadeInUp } from "@/components/animations/variants";
 import { featuredWorkCards } from "@/content/projects";
 import { useModal } from "@/contexts/ModalContext";
 import styles from "./FeaturedWorkSection.module.scss";
@@ -103,8 +105,8 @@ export function FeaturedWorkSection() {
             role="list"
             aria-label="Project cards"
           >
-          {featuredWorkCards.map((project) => (
-            <article
+          {featuredWorkCards.map((project, index) => (
+            <motion.article
               key={project.id}
               className={styles.card}
               style={
@@ -123,6 +125,14 @@ export function FeaturedWorkSection() {
                 } as React.CSSProperties
               }
               role="listitem"
+              initial={fadeInUp.initial}
+              whileInView={fadeInUp.animate}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+                delay: index * 0.25,
+              }}
             >
               <button
                 type="button"
@@ -199,7 +209,7 @@ export function FeaturedWorkSection() {
                   <p className={styles.cardDesc}>{project.shortDescription}</p>
                 </div>
               </button>
-            </article>
+            </motion.article>
           ))}
           </div>
         </div>
