@@ -1,6 +1,4 @@
-.section {
-  // Full-bleed wrapper for multiple subsections (each handles its own bg/padding)
-}
+// .section is an intentionally light wrapper; each subsection handles its own bg/padding.
 
 .inner {
   max-width: var(--max-width-content);
@@ -85,6 +83,29 @@
 
 .mediaImg {
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding-block: clamp(4.75rem, 10vw, 5.5rem);
+    padding-inline: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .tagIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .media {
+    border-radius: 14px;
+    max-width: none;
+  }
+
+  .birlaCaption {
+    padding: var(--space-lg);
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
 }
 
 /* Canary workshop */
@@ -245,6 +266,12 @@
   gap: 60px;
 }
 
+@media (max-width: 768px) {
+  .birlaGrid {
+    gap: 28px;
+  }
+}
+
 .birlaItem {
   position: relative;
   border-radius: 30px;
@@ -256,6 +283,12 @@
   position: relative;
   aspect-ratio: 1200 / 600;
   background: var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .birlaImage {
+    aspect-ratio: 4 / 5;
+  }
 }
 
 .birlaImg {
@@ -281,5 +314,13 @@
   line-height: 1.2;
   font-size: 2rem;
   color: var(--color-text-inverse);
+}
+
+@media (max-width: 768px) {
+  .birlaCaption {
+    padding: var(--space-lg);
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
 }
 
