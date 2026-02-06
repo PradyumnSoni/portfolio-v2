@@ -14,8 +14,8 @@ const nohemi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Pradyumn – UX Design Portfolio",
-  description: "UX Design Portfolio. Staff UX designer at Vymo. Previously at Swiggy and Flipkart. Case studies, talks, and featured work.",
+  title: "Pradyumn | UX Portfolio",
+  description: "Product Design Portfolio. About, talks, and featured work.",
 };
 
 export const viewport: Viewport = {
