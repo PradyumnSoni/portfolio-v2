@@ -70,3 +70,24 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+@media (max-width: 600px) {
+  .content {
+    gap: var(--space-md);
+  }
+
+  .logo {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .lineText,
+  .lineSubtext {
+    font-size: 2.2rem;
+  }
+
+  .lineBottom {
+    min-height: 3.4rem;
+    padding: 0 1.5rem;
+  }
+}

@@ -47,7 +47,8 @@ export function FeaturedWorkSection() {
   const scroll = useCallback((direction: "prev" | "next") => {
     const el = trackRef.current;
     if (!el) return;
-    const cardWidth = el.offsetWidth * 0.85; // ~1 card + gap
+    const isMobile = window.innerWidth <= 768;
+    const cardWidth = el.offsetWidth * (isMobile ? 1 : 0.85); // ~1 card on mobile, ~1 card + gap on desktop
     const amount = direction === "next" ? cardWidth : -cardWidth;
     el.scrollBy({ left: amount, behavior: "smooth" });
   }, []);
@@ -131,7 +132,7 @@ export function FeaturedWorkSection() {
               transition={{
                 duration: 0.6,
                 ease: [0.4, 0, 0.2, 1],
-                delay: index * 0.25,
+                delay: index * 0.15,
               }}
             >
               <button
@@ -161,7 +162,7 @@ export function FeaturedWorkSection() {
                       src={project.image}
                       alt=""
                       fill
-                      sizes="(max-width: 768px) 85vw, 380px"
+                      sizes="(max-width: 768px) 100vw, 380px"
                       className={styles.cardBgImg}
                     />
                   ) : (
@@ -183,7 +184,7 @@ export function FeaturedWorkSection() {
                       src={project.foregroundImage}
                       alt=""
                       fill
-                      sizes="(max-width: 768px) 85vw, 380px"
+                      sizes="(max-width: 768px) 100vw, 380px"
                       className={styles.cardForegroundImg}
                     />
                   </div>
