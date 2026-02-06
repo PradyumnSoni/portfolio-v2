@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.scss";
 import { AppProviders } from "@/components/providers/AppProviders";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const nohemi = localFont({
   src: [
@@ -36,6 +37,7 @@ export default function RootLayout({
           {children}
         </AppProviders>
         <div id="modal-root" aria-hidden="true" />
+        <SpeedInsights />
       </body>
     </html>
   );
