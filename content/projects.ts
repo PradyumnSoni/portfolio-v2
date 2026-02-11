@@ -65,6 +65,8 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     overlayStart: "rgba(25, 63, 142, 1)",
     overlayEnd: "rgba(12, 20, 52, 0.8)",
     foregroundImage: "/ProjectForegroundMarketplace.png",
+    projectLink:
+      "https://www.figma.com/proto/pnsPzmvHJwvGIXLSKbCJRw/The-Better-OLX?page-id=118%3A2&node-id=735-147&viewport=114%2C90%2C0.3&t=Bfwqeq4bMjmn9zx3-1&scaling=contain&content-scaling=fixed&starting-point-node-id=735%3A147",
   },
   {
     id: "food-for-thought",

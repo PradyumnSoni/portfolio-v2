@@ -140,8 +140,13 @@ export function FeaturedWorkSection() {
                 className={styles.cardButton}
                 onClick={() => {
                   if (project.id === "marketplace-project") {
-                    setComingSoon(true);
-                    window.setTimeout(() => setComingSoon(false), 3000);
+                    const url =
+                      project.projectLink ??
+                      project.prototypeLink ??
+                      project.figmaLink;
+                    if (url) {
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    }
                     return;
                   }
                   openModal("project", {
