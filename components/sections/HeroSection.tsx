@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/components/animations/variants";
-import { Tag } from "@/components/ui/Tag";
 import { useFirstLoadReady } from "@/app/PageClient";
 import styles from "./HeroSection.module.scss";
 
@@ -11,60 +10,42 @@ export function HeroSection() {
   const isReady = useFirstLoadReady();
 
   return (
-    <section id="hero" className={styles.hero} aria-label="Hero">
+    <section id="hero" className={styles.hero} aria-label="Pradyumn Soni">
+      <h1 className={styles.visuallyHidden}>Pradyumn Soni</h1>
       <motion.div
         className={styles.inner}
         variants={staggerContainer}
         initial="initial"
         animate={isReady ? "animate" : "initial"}
       >
-        <Tag
-          as="p"
-          motion
-          className={styles.label}
-          motionProps={{
-            initial: fadeInUp.initial,
-            animate: isReady ? fadeInUp.animate : fadeInUp.initial,
-            transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
-          }}
-          icon={
-            <Image
-              src="/pradyhead.png"
-              alt=""
-              width={40}
-              height={40}
-              className={styles.labelHead}
-              priority
-              unoptimized
-              aria-hidden
-            />
-          }
+        <motion.div className={styles.portrait} variants={fadeInUp}>
+          <Image
+            src="/pradyhead2.0.jpg"
+            alt=""
+            width={88}
+            height={88}
+            className={styles.portraitImg}
+            priority
+            unoptimized
+          />
+        </motion.div>
+        <motion.p
+          id="about"
+          className={styles.body}
+          variants={fadeInUp}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
         >
-          Pradyumn Soni
-        </Tag>
-        <motion.h1
-          className={styles.title}
+          I design UX/UI because products don&apos;t have the luxury of being confusing.
+        </motion.p>
+        <motion.blockquote
+          className={styles.quote}
           variants={fadeInUp}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
         >
-          UX Design Portfolio
-        </motion.h1>
-        <motion.div
-          className={styles.mockups}
-          variants={fadeInUp}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          aria-hidden
-        >
-          <Image
-            src="/HeroDeviceMockups.png"
-            alt=""
-            width={960}
-            height={540}
-            className={styles.mockupImage}
-            priority
-            sizes="(max-width: 900px) 100vw, 960px"
-          />
-        </motion.div>
+          <p className={styles.quoteText}>
+            “To be truly simple, you have to go really deep.” <cite className={styles.quoteCite}>Jony Ive</cite>
+          </p>
+        </motion.blockquote>
       </motion.div>
     </section>
   );

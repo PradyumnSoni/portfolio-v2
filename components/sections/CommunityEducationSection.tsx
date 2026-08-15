@@ -31,7 +31,7 @@ function CommunityEducationIntro() {
               textClassName={styles.tagText}
               icon={
                 <Image
-                  src="/pradyhead.png"
+                  src="/pradyhead2.0.jpg"
                   alt=""
                   width={32}
                   height={32}
@@ -81,7 +81,7 @@ function CanaryWorkshop() {
               textClassName={styles.tagText}
               icon={
                 <Image
-                  src="/pradyhead.png"
+                  src="/pradyhead2.0.jpg"
                   alt=""
                   width={32}
                   height={32}
@@ -170,7 +170,7 @@ function BirlaPanel() {
               textClassName={styles.tagText}
               icon={
                 <Image
-                  src="/pradyhead.png"
+                  src="/pradyhead2.0.jpg"
                   alt=""
                   width={32}
                   height={32}

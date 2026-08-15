@@ -166,16 +166,8 @@
      falls back to card accent color otherwise. */
   background: linear-gradient(
     180deg,
-    color-mix(
-      in srgb,
-      var(--card-overlay-start, var(--card-accent)) 100%,
-      transparent
-    ) 0%,
-    color-mix(
-      in srgb,
-      var(--card-overlay-end, var(--card-accent)) 80%,
-      transparent
-    ) 100%
+    var(--card-overlay-start, var(--card-accent)) 0%,
+    var(--card-overlay-end, var(--card-accent)) 100%
   );
   pointer-events: none;
 }
@@ -192,8 +184,21 @@
 }
 
 .cardForegroundImg {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: bottom center;
+}
+
+.cardForegroundFill {
+  top: calc(var(--space-lg) + 8.75rem);
+  height: auto;
+  overflow: hidden;
+}
+
+.cardForegroundFill .cardForegroundImg {
+  max-width: none;
+  object-fit: cover;
 }
 
 /* Content: icon + title in row, description below */

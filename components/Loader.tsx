@@ -58,7 +58,7 @@ export function Loader({ isReady = false }: LoaderProps) {
             <div className={styles.lineTop}>
               <span className={styles.logo}>
                 <Image
-                  src="/pradyhead.png"
+                  src="/pradyhead2.0.jpg"
                   alt=""
                   width={80}
                   height={80}

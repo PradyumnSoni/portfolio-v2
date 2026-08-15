@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import Icon from "@mdi/react";
 import { mdiEmail, mdiWhatsapp, mdiLinkedin } from "@mdi/js";
@@ -12,9 +11,9 @@ import styles from "./Header.module.scss";
 const SCROLL_THRESHOLD = 60;
 
 const navLinks = [
-  { href: "#featured-work", label: "Featured Projects" },
+  { href: "#featured-work", label: "Projects" },
   { href: "#about", label: "About" },
-  { href: "#community-education", label: "Community" },
+  { href: "#community-education", label: "Teaching" },
 ];
 
 const headerVariants = {
@@ -83,6 +82,11 @@ export function Header() {
     };
   }, []);
 
+  const closeMenus = () => {
+    setMenuOpen(false);
+    setContactOpen(false);
+  };
+
   return (
     <motion.header
       className={`${styles.header} ${visible ? "" : styles.headerHidden}`}
@@ -92,17 +96,8 @@ export function Header() {
       variants={reducedMotion ? undefined : headerVariants}
     >
       <nav className={styles.nav} aria-label="Main">
-        <a href="#hero" className={styles.logo} aria-label="Pradyumn home">
-          <Image
-            src="/pradyhead.png"
-            alt=""
-            width={40}
-            height={40}
-            className={styles.logoImage}
-            priority
-            unoptimized
-          />
-          <span className={styles.logoText}>Pradyumn</span>
+        <a href="#hero" className={styles.logo}>
+          Pradyumn Soni
         </a>
         <button
           type="button"
@@ -116,85 +111,77 @@ export function Header() {
             {menuOpen ? "✕" : "☰"}
           </span>
         </button>
-        <ul
+        <div
           id="main-nav"
-          className={`${styles.links} ${menuOpen ? styles.linksOpen : ""}`}
-          role="list"
+          className={`${styles.trail} ${menuOpen ? styles.trailOpen : ""}`}
         >
-          {navLinks.map(({ href, label }) => (
-            <li key={href}>
-              <a
-                href={href}
-                onClick={() => {
-                  setMenuOpen(false);
-                  setContactOpen(false);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    setMenuOpen(false);
-                    setContactOpen(false);
-                  }
-                }}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div className={styles.contactWrapper} ref={contactRef}>
-          <button
-            type="button"
-            className={styles.contactButton}
-            aria-haspopup="true"
-            aria-expanded={contactOpen}
-            onClick={() => setContactOpen((open) => !open)}
-          >
-            Contact
-          </button>
-          {contactOpen && (
-            <div className={styles.contactMenu} role="menu">
-              <a
-                href="https://www.linkedin.com/in/pradyumnsoni/"
-                target="_blank"
-                rel="noopener noreferrer"
-                role="menuitem"
-              >
-                <Icon
-                  path={mdiLinkedin}
-                  className={styles.contactMenuIcon}
-                  size="1rem"
-                  aria-hidden
-                />
-                <span>LinkedIn</span>
-              </a>
-              <a
-                href="https://wa.me/919667656325"
-                target="_blank"
-                rel="noopener noreferrer"
-                role="menuitem"
-              >
-                <Icon
-                  path={mdiWhatsapp}
-                  className={styles.contactMenuIcon}
-                  size="1rem"
-                  aria-hidden
-                />
-                <span>WhatsApp</span>
-              </a>
-              <a
-                href="mailto:pradyumnsoni@gmail.com"
-                role="menuitem"
-              >
-                <Icon
-                  path={mdiEmail}
-                  className={styles.contactMenuIcon}
-                  size="1rem"
-                  aria-hidden
-                />
-                <span>Email</span>
-              </a>
-            </div>
-          )}
+          <ul className={styles.links} role="list">
+            {navLinks.map(({ href, label }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  onClick={closeMenus}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") closeMenus();
+                  }}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.contactWrapper} ref={contactRef}>
+            <button
+              type="button"
+              className={styles.contactButton}
+              aria-haspopup="true"
+              aria-expanded={contactOpen}
+              onClick={() => setContactOpen((open) => !open)}
+            >
+              Contact
+            </button>
+            {contactOpen && (
+              <div className={styles.contactMenu} role="menu">
+                <a
+                  href="https://www.linkedin.com/in/pradyumnsoni/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="menuitem"
+                >
+                  <Icon
+                    path={mdiLinkedin}
+                    className={styles.contactMenuIcon}
+                    size="1rem"
+                    aria-hidden
+                  />
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  href="https://wa.me/919667656325"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="menuitem"
+                >
+                  <Icon
+                    path={mdiWhatsapp}
+                    className={styles.contactMenuIcon}
+                    size="1rem"
+                    aria-hidden
+                  />
+                  <span>WhatsApp</span>
+                </a>
+                <a href="mailto:pradyumnsoni@gmail.com" role="menuitem">
+                  <Icon
+                    path={mdiEmail}
+                    className={styles.contactMenuIcon}
+                    size="1rem"
+                    aria-hidden
+                  />
+                  <span>Email</span>
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
     </motion.header>

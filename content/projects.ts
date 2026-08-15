@@ -32,6 +32,8 @@ export type FeaturedWorkCard = Project & {
   disableColorOverlay?: boolean;
   /** Optional foreground image placed at bottom of card (e.g. person + device mockup) */
   foregroundImage?: string;
+  /** Stretch foreground to full card width below the title, instead of letterboxing */
+  foregroundFullWidth?: boolean;
 };
 
 export const featuredWorkCards: FeaturedWorkCard[] = [
@@ -39,17 +41,18 @@ export const featuredWorkCards: FeaturedWorkCard[] = [
     id: "delivery-partner-app",
     title: "Dispatch Delivery Partner App",
     shortDescription:
-      "A rider-facing app for everyday deliveries. Designed to onboard riders and make them complete orders reliably.",
+      "A platform that helps delivery partners find orders, navigate efficiently, and earn more.",
     cardColor: "#F5E6C8",
     cardTextColor: "dark",
     icon: "/ProjectIconDispatch.jpg",
     image: "/ProjectBackgroundDispatch.jpg",
-    // F2E6C7 90% opacity to E6BA42 80% opacity
-    overlayStart: "rgba(242, 230, 199, 1)",
-    overlayEnd: "rgba(230, 186, 66, 0.5)",
+    // FFFCFA 80% to EFE8E4 90%
+    overlayStart: "rgba(255, 252, 250, 0.8)",
+    overlayEnd: "rgba(239, 232, 228, 0.9)",
     foregroundImage: "/ProjectForegroundDispatch.png",
+    foregroundFullWidth: true,
     projectLink:
-      "https://play.google.com/store/apps/details?id=com.harshdispatch.dispatchrider.v2",
+      "https://play.google.com/store/apps/details?id=com.dispatchapp.partner&hl=en_IN",
     customContentId: "dispatch",
   },
   {

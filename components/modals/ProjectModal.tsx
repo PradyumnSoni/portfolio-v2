@@ -95,7 +95,7 @@ export function ProjectModal() {
           />
           <motion.div
             ref={contentRef}
-            className={styles.content}
+            className={hasCustomContent ? `${styles.content} ${styles.contentFlush}` : styles.content}
             variants={modalContent}
             initial="initial"
             animate="animate"
@@ -103,7 +103,7 @@ export function ProjectModal() {
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className={styles.body}>
+            <div className={hasCustomContent ? `${styles.body} ${styles.bodyFlush}` : styles.body}>
               {hasCustomContent ? (
                 <div className={styles.customContent}>
                   <DispatchProjectContent />

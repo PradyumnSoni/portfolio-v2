@@ -3,10 +3,7 @@
 import Image from "next/image";
 import Icon from "@mdi/react";
 import { mdiChevronLeft, mdiChevronRight } from "@mdi/js";
-import { motion } from "framer-motion";
 import { useRef, useCallback, useState, useEffect } from "react";
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { fadeInUp } from "@/components/animations/variants";
 import { featuredWorkCards } from "@/content/projects";
 import { useModal } from "@/contexts/ModalContext";
 import styles from "./FeaturedWorkSection.module.scss";
@@ -59,7 +56,7 @@ export function FeaturedWorkSection() {
       className={styles.section}
       aria-labelledby="featured-heading"
     >
-      <ScrollReveal className={styles.inner}>
+      <div className={styles.inner}>
         <header className={styles.header}>
           <div className={styles.headerText}>
             <h2 id="featured-heading" className={styles.heading}>
@@ -106,8 +103,8 @@ export function FeaturedWorkSection() {
             role="list"
             aria-label="Project cards"
           >
-          {featuredWorkCards.map((project, index) => (
-            <motion.article
+          {featuredWorkCards.map((project) => (
+            <article
               key={project.id}
               className={styles.card}
               style={
@@ -126,14 +123,6 @@ export function FeaturedWorkSection() {
                 } as React.CSSProperties
               }
               role="listitem"
-              initial={fadeInUp.initial}
-              whileInView={fadeInUp.animate}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1],
-                delay: index * 0.15,
-              }}
             >
               <button
                 type="button"
@@ -169,6 +158,7 @@ export function FeaturedWorkSection() {
                       fill
                       sizes="(max-width: 768px) 100vw, 380px"
                       className={styles.cardBgImg}
+                      unoptimized
                     />
                   ) : (
                     <div
@@ -184,12 +174,15 @@ export function FeaturedWorkSection() {
                 )}
                 {/* Foreground image at bottom of card (e.g. person + device) */}
                 {project.foregroundImage && (
-                  <div className={styles.cardForeground} aria-hidden>
-                    <Image
+                  <div
+                    className={`${styles.cardForeground} ${
+                      project.foregroundFullWidth ? styles.cardForegroundFill : ""
+                    }`}
+                    aria-hidden
+                  >
+                    <img
                       src={project.foregroundImage}
                       alt=""
-                      fill
-                      sizes="(max-width: 768px) 100vw, 380px"
                       className={styles.cardForegroundImg}
                     />
                   </div>
@@ -205,6 +198,7 @@ export function FeaturedWorkSection() {
                           width={40}
                           height={40}
                           className={styles.iconImg}
+                          unoptimized
                         />
                       ) : (
                         <span className={styles.iconPlaceholder} aria-hidden />
@@ -215,7 +209,7 @@ export function FeaturedWorkSection() {
                   <p className={styles.cardDesc}>{project.shortDescription}</p>
                 </div>
               </button>
-            </motion.article>
+            </article>
           ))}
           </div>
         </div>
@@ -224,7 +218,7 @@ export function FeaturedWorkSection() {
             This project is undergoing an update. Please check back later. 🪴
           </div>
         )}
-      </ScrollReveal>
+      </div>
     </section>
   );
 }
